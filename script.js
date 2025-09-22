@@ -1,22 +1,26 @@
+//your JS code here. If required.
 // Select all squares
-const squares = document.querySelectorAll('.square');
+const squares = document.querySelectorAll(".square");
 
-// Loop through each square to add event listeners
-squares.forEach(square => {
-    square.addEventListener('mouseenter', () => {
-        squares.forEach(sq => {
-            if (sq !== square) {
-                sq.style.backgroundColor = '#6F4E37'; // Coffee
-            } else {
-                sq.style.backgroundColor = '#E6E6FA'; // Lavender
-            }
-        });
-    });
+// Colors
+const lavender = "#E6E6FA";
+const coffee = "#6F4E37";
 
-    // Reset all squares to Lavender when mouse leaves a square
-    square.addEventListener('mouseleave', () => {
-        squares.forEach(sq => {
-            sq.style.backgroundColor = '#E6E6FA'; // Lavender
-        });
+// Loop through each square
+squares.forEach((sq) => {
+  // When mouse enters one square
+  sq.addEventListener("mouseover", () => {
+    squares.forEach((otherSq) => {
+      if (otherSq !== sq) {
+        otherSq.style.backgroundColor = coffee;
+      }
     });
+  });
+
+  // When mouse leaves that square
+  sq.addEventListener("mouseout", () => {
+    squares.forEach((s) => {
+      s.style.backgroundColor = lavender;
+    });
+  });
 });
